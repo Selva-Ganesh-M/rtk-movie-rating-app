@@ -1,15 +1,23 @@
 @import "../../common/common.scss";
 
-.movie-list {
+.movie-wrapper {
+  width: 100%;
+}
+
+.movie-list,
+.series-list {
   margin: 20px 0;
   h2 {
     color: $secondary-font;
     margin-bottom: 10px;
     font-weight: 400;
+    background-color: $secondary-color;
+    padding: 10px;
   }
 }
 
-.movie-container {
+.movie-container,
+.series-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   grid-gap: 15px;

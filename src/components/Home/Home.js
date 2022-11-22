@@ -2,35 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import MovieListing from "../MovieListing/MovieListing";
-import { asyncFetchMovies } from "../../features/movies/movieSlice";
+import { asyncFetchAllMovies } from "../../features/movies/movieSlice";
+import { asyncGetAllSeries } from "../../features/series/seriesSlice";
+import "./Home.scss";
 
 const Home = () => {
+  console.log("home re-render");
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(asyncFetchMovies("harry"));
-  }, [dispatch]);
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     dispatch(movieActions.moviesRequested());
-  //     try {
-  //       const res = await api
-  //         .get(`/?APIKey=${APIKey}&s=${searchTerm}&type=movie`)
-  //         .catch((err) => {
-  //           // If this catch is not here, we still catch the error as "Axios Error"
-  //           throw err.message; //throws an error if it can't reach the server "Network Error"
-  //         });
-  //       if (res.data.Response === "False") {
-  //         throw new Error("something is wrong with the request."); //this is the "custom error" we thrown.
-  //       } else {
-  //         console.log("res", res);
-  //         dispatch(movieActions.moviesFetchSucceeded(res.data.Search));
-  //       }
-  //     } catch (error) {
-  //       dispatch(movieActions.moviesFetchFailed(error));
-  //     }
-  //   };
-  //   fetchMovies();
-  // }, []);
+    console.log("home useEffect");
+    dispatch(asyncFetchAllMovies("fight"));
+    dispatch(asyncGetAllSeries("family"));
+  }, []);
 
   return (
     <div className="home">

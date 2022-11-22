@@ -2,42 +2,42 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  getCurrentMovie,
-  getMovies,
-  movieActions,
-} from "../../features/movies/movieSlice";
-import "./MovieDetails.scss";
+  getCurrentSeries,
+  getSeries,
+  seriesActions,
+} from "../../features/series/seriesSlice";
 
-const MovieDetails = () => {
+const SeriesDetails = () => {
   const { imdbID } = useParams();
   const dispatch = useDispatch();
-  const movies = useSelector(getMovies);
-  const currentMovie = movies.currentMovie;
+  const series = useSelector(getSeries);
+  const currentSeries = useSelector(getSeries).currentSeries;
   useEffect(() => {
-    dispatch(getCurrentMovie(imdbID));
+    dispatch(getCurrentSeries(imdbID));
     return () => {
-      dispatch(movieActions.currentMovieCleanup());
+      dispatch(seriesActions.currentSeriesCleanup());
     };
   }, [dispatch, imdbID]);
   const {
+    Title,
     Ratings,
     imdbVotes,
     Runtime,
     Year,
     Plot,
+    Poster,
     Director,
     Actors,
     Genre,
     Awards,
     Language,
-  } = currentMovie;
-
-  return !movies.isLoading ? (
+  } = currentSeries;
+  return currentSeries ? (
     <div className="container">
       <div className="details">
-        <h1>{currentMovie.Title}</h1>
+        <h1>{Title}</h1>
         <div className="subs">
-          {/* <p>IMDB rating: {Ratings[0].Value}</p> */}
+          {Ratings && <p>IMDB rating: {Ratings[0].Value}</p>}
           <p>IMDB Votes: {imdbVotes}</p>
           <p>Runtime: {Runtime}</p>
           <p>Year: {Year}</p>
@@ -69,12 +69,12 @@ const MovieDetails = () => {
         </table>
       </div>
       <div className="poster">
-        <img src={currentMovie.Poster} alt={currentMovie.Title} />
+        <img src={Poster} alt={Title} />
       </div>
     </div>
   ) : (
-    <h3>Loading...</h3>
+    "null"
   );
 };
 
-export default MovieDetails;
+export default SeriesDetails;

@@ -7,6 +7,38 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.set {
+  display: flex;
+  align-items: center;
+  .search-bar {
+    margin-right: 3em;
+  }
+}
+
+.search-bar {
+  input {
+    font-size: 16;
+    min-width: 300px;
+    padding: 0.5em;
+    margin-right: 10px;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    border: none;
+    padding: 0.55em;
+    min-width: 100px;
+    color: white;
+    font-weight: bold;
+    background-color: $primary-color;
+  }
 }
 
 .logo {

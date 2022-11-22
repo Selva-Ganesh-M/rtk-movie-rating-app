@@ -1,0 +1,34 @@
+@import "../../common/common.scss";
+
+.container {
+  display: flex;
+  padding: 1em;
+  justify-content: space-between;
+}
+
+.poster {
+  width: 400px;
+}
+
+.details {
+  h1 {
+    margin-bottom: 0.5em;
+  }
+  .subs {
+    display: flex;
+    margin-bottom: 1em;
+
+    p {
+      margin-right: 1.5em;
+      color: $secondary-font;
+    }
+  }
+}
+
+.secondary {
+  color: $secondary-font;
+}
+
+.plot {
+  margin-bottom: 1em;
+}
