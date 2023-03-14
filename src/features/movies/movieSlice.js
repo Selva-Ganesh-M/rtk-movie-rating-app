@@ -13,6 +13,7 @@ export const asyncFetchAllMovies = createAsyncThunk(
   "movies/asyncFetchAllMovies",
   async (searchTerm, { rejectWithValue, fulfillWithValue }) => {
     try {
+      console.log(APIKey);
       const res = await api
         .get(`/?APIKey=${APIKey}&s=${searchTerm}&type=movie`)
         .then((res) => res.data);
